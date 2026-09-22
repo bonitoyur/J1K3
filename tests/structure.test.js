@@ -5,9 +5,11 @@ import { mountains } from '../src/data/mountains.js';
 import { regionMaps } from '../src/data/region-maps.js';
 import { validateVisit } from '../src/features/visit-model.js';
 
-test('100 unique mountain IDs, Firebase rules and regional markers agree', () => {
-  assert.equal(mountains.length, 100);
-  assert.equal(new Set(mountains.map(m => m.id)).size, 100);
+test('103 unique mountain IDs, Firebase rules and regional markers agree', () => {
+  assert.equal(mountains.length, 103);
+  assert.equal(new Set(mountains.map(m => m.id)).size, 103);
+  assert.equal(mountains.filter(m => !m.isAdditional).length, 100);
+  assert.deepEqual(mountains.slice(100).map(m => m.id), ['taegisan', 'inwangsan', 'bugaksan']);
   const rules = fs.readFileSync('firebase/firestore.rules', 'utf8');
   const nationalPattern = new RegExp('^' + rules.match(/id\.matches\('([^']+)'\)/)[1] + '$');
   for (const mountain of mountains) {

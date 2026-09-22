@@ -1,1 +1,5 @@
-{ "projects": { "default": "j1k3-b0d5b" } }
+{
+  "projects": {
+    "default": "j1k3-b0d5b"
+  }
+}

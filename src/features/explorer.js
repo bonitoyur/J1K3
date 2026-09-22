@@ -44,7 +44,7 @@ function selectRegion(region, chooseFirst = true) {
   byId('regionMountains').hidden = ['전국','수도권'].includes(region);
   const items = visibleMountains();
   byId('mapCount').textContent = `${items.length} MOUNTAINS`;
-  byId('selectionSummary').textContent = `${region} · ${items.length}곳 / 전국 100곳 — 경계에 걸친 산은 대표 접근 지역에 한 번만 표시`;
+  byId('selectionSummary').textContent = `${region} · ${items.length}곳 / 전국 ${mountains.length}곳 — 100대 명산과 추가 산`;
   byId('quick-title').textContent = `${region} ${items.length}곳 한눈에 보기`;
   byId('mapHelp').textContent = region === '전국' ? '지역을 고르면 각 지역 지도가 열립니다. 지도 위 산 아이콘이나 이름을 눌러보세요.' : region === '수도권' ? '산 아이콘이나 이름을 누르세요. 원본 배치를 따른 개략 지도이며 작은 화면에서는 좌우로 이동할 수 있어요.' : '지도 위 산 아이콘·이름을 누르면 상세 카드가 열립니다. 확대하거나 좌우로 밀어서 선택하세요. 산 선택용 개략도로 실제 경계·위치·축척과 다릅니다. 정확한 접근 위치는 카드의 길찾기를 확인하세요.';
   renderControls();
@@ -103,7 +103,7 @@ function renderControls() {
     card.type = 'button';
     card.className = 'mini-mountain';
     card.dataset.id = mountain.id;
-    card.innerHTML = `<span>${String(index + 1).padStart(2, '0')} · ${mountain.region}</span><strong>${mountain.name}</strong><small>${mountain.elevation} · ${mountain.hikeTime}</small>`;
+    card.innerHTML = `<span>${String(index + 1).padStart(2, '0')} · ${mountain.region}${mountain.isAdditional ? ' · 추가 산' : ''}</span><strong>${mountain.name}</strong><small>${mountain.elevation} · ${mountain.hikeTime}</small>`;
     card.addEventListener('click', () => selectMountain(mountain.id, true));
     grid.appendChild(card);
   });
@@ -116,7 +116,7 @@ function selectMountain(id, scrollToDetail = false) {
   activeId = id;
   if (activeRegion !== '전국' && mountain.group !== activeRegion) selectRegion(mountain.group, false);
 
-  byId('regionBadge').textContent = mountain.region;
+  byId('regionBadge').textContent = mountain.region + (mountain.isAdditional ? ' · 추가 산' : '');
   byId('difficultyBadge').textContent = mountain.difficulty;
   byId('mountainName').textContent = mountain.name;
   byId('mountainLocation').textContent = mountain.location;
@@ -135,6 +135,7 @@ function selectMountain(id, scrollToDetail = false) {
   byId('festival').textContent = mountain.festival;
   byId('festivalNote').textContent = mountain.festivalNote;
   byId('festivalLink').href = festivalUrl(mountain.festivalQuery);
+  byId('sourceLink').textContent = mountain.sourceLabel || '선정 목록 대조 자료 ↗';
   byId('sourceLink').href = mountain.sourceUrl || 'https://fmtview.com/227';
   byId('safetyLink').href = mountain.safetyUrl || `https://search.naver.com/search.naver?query=${encodeURIComponent(mountain.location + ' ' + mountain.name + ' 공식 탐방로 통제')}`;
   byId('safetyLink').textContent = mountain.safetyLabel || '탐방로·입산 공지 검색 ↗';

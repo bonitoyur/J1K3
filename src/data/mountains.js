@@ -1,3 +1,4 @@
+import { additionalMountains } from './additional-mountains.js';
 import { nationalExtraMountains } from './nationwide.js';
 
 const capitalMountains = [
@@ -109,7 +110,7 @@ const capitalMountains = [
 ];
 
 const regions = ['수도권', '강원', '충청', '전라', '경상', '제주'];
-const mountains = [...capitalMountains.map(m => ({...m, group: '수도권'})), ...nationalExtraMountains];
+const mountains = [...capitalMountains.map(m => ({...m, group: '수도권'})), ...nationalExtraMountains, ...additionalMountains];
 mountains.find(m => m.id === 'baegun').name = '백운산(포천)';
 // Correct known route ambiguity while retaining the Seoul Station origin.
 mountains.find(m => m.id === 'bukhansan').transitRoute = '서울역 → 4호선 성신여대입구역 → 우이신설선 북한산우이역 → 도선사 방향 도보';
