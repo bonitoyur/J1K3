@@ -1,0 +1,11 @@
+{
+  "name": "hongje033-mountains",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "build": "node scripts/build.js",
+    "test": "node --test tests/*.test.cjs tests/*.test.js"
+  }
+}

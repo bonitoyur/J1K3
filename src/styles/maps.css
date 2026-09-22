@@ -1,0 +1,70 @@
+/* Each marker is a single icon + name target at the previous dot position. */
+.region-outline { display: block; width: 100%; height: auto; }
+.map-scroll { overflow-x: auto; border-radius: 16px; }
+.map-scroll .map-wrap { width: 100%; min-width: 560px; }
+.map-wrap { background: #f7faf5; }
+.hotspot { width: auto; min-width: 48px; height: auto; min-height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 2px 4px; color: var(--forest); border-radius: 10px; line-height: 1.2; }
+.hotspot::before, .hotspot::after { content: none; }
+.mountain-pin-icon { display: block; font-size: 26px; line-height: 1; }
+.mountain-pin-name { display: block; padding: 2px 3px; font-size: 14px; font-weight: 800; white-space: nowrap; background: #f7faf5; border-radius: 4px; }
+.hotspot:hover, .hotspot.active { z-index: 2; background: #fff; box-shadow: 0 0 0 2px var(--forest), 0 4px 10px #173c2d20; }
+.detail-card { scroll-margin-top: 84px; }
+@media (max-width: 420px) { .map-card { padding: 18px 8px; } .hotspot { padding-inline: 0; } .mountain-pin-icon { font-size: 22px; } }
+
+/* Nationwide region selection, preserving the original detail cards. */
+[hidden] { display: none !important; }
+.intro { padding-top: 42px; gap: 32px; }
+h1 { font-size: clamp(2.05rem, 3.5vw, 3.5rem); line-height: 1.27; word-break: keep-all; }
+.region-nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px 0 10px; }
+.region-nav button { border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--forest); padding: 10px 18px; min-height: 46px; font-weight: 700; font-size: 1rem; }
+.region-nav button[aria-pressed="true"] { background: var(--forest); color: white; border-color: var(--forest); }
+.selection-summary { color: var(--muted); font-size: .875rem; margin: 4px 0 20px; }
+.national-overview { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; padding: 18px; background: #f0f5e8; border-radius: 18px; }
+.region-tile { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 4px; border: 1px solid #bfd1b0; border-radius: 16px; padding: 16px; background: white; color: var(--forest); min-width: 0; min-height: 140px; }
+.region-tile:hover, .region-tile:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; background: #e9f6cd; }
+.region-tile .tile-icon { font-size: 1.8rem; }
+.region-tile strong { font-size: 1.3rem; }
+.region-tile > span:not(.tile-icon) { font-size: .875rem; color: var(--muted); }
+.region-tile b { font-size: .875rem; margin-top: auto; }
+.tile-0 { grid-area: 1 / 1; }.tile-1 { grid-area: 1 / 2; }
+.tile-2 { grid-area: 2 / 1; }.tile-3 { grid-area: 3 / 1; }
+.tile-4 { grid-area: 2 / 2 / 4 / 3; justify-content: center; }
+.tile-5 { grid-area: 4 / 1 / 5 / 3; min-height: 100px; flex-direction: row; align-items: center; flex-wrap: wrap; gap: 12px; }
+.tile-5 b { margin: 0 0 0 auto; }
+.region-mountains { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; max-height: 620px; overflow-y: auto; padding: 5px; }
+.region-mountain-button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; min-height: 88px; padding: 12px 5px; color: var(--forest); border: 1px solid var(--line); border-radius: 12px; background: #f7faf5; }
+.region-mountain-button .mountain-pin-name { background: none; white-space: normal; word-break: keep-all; }
+.region-mountain-button.active, .region-mountain-button:hover { box-shadow: inset 0 0 0 2px var(--forest); background: var(--lime); }
+.data-note { margin: 24px 0 0; font-size: .875rem; color: var(--muted); }
+.data-note a { display: inline-block; margin-top: 6px; }
+.stats strong { font-size: 1rem; overflow-wrap: anywhere; }
+.stats div { padding: 18px; }
+.mini-mountain small, .transport-item p, .local-card > p:not(.mini-label), .map-help, .location, .route-link, .festival-card a { font-size: .875rem; }
+.mini-mountain span, .stats span, .transport-item span { font-size: .875rem; }
+.mountain-pin-name { font-size: .875rem; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+@media(max-width:700px) {
+  .intro { gap: 18px; padding-top: 28px; }
+  .region-nav { gap: 6px; }
+  .region-nav button { padding: 8px 12px; font-size: .875rem; }
+  .national-overview { padding: 10px; gap: 9px; }
+  .region-tile { padding: 12px; }
+  .region-mountains { max-height: 420px; }
+}
+@media(min-width:1081px) { .map-card { position: static; } }
+
+/* Offline, self-contained region schematics with keyboard-accessible markers. */
+.region-mountains { display:block; padding:0; max-height:none; overflow:visible; background:#f0f6f4; border-radius:16px; }
+.regional-map-toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px; }
+.regional-map-toolbar button { background:white; border:1px solid #acbf96; border-radius:999px; padding:10px 14px; min-height:44px; color:var(--forest); font-weight:700; }
+.regional-map-scroll { overflow:auto; max-height:820px; border-radius:0 0 16px 16px; }
+.regional-map-canvas { position:relative; width:100%; min-width:740px; aspect-ratio:8/9; }
+.regional-map-canvas.expanded { min-width:1050px; }
+.regional-map-canvas svg { display:block; width:100%; height:100%; }
+.map-place-label { fill:#789183; font-size:18px; text-anchor:middle; }
+.regional-pin { position:absolute; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:3px 5px; min-width:44px; min-height:48px; background:transparent; color:var(--forest); border:0; border-radius:9px; cursor:pointer; }
+.regional-pin span { font-size:27px; line-height:1; }
+.regional-pin strong { white-space:nowrap; font-size:13px; background:#fffef2ed; border-radius:5px; padding:3px 5px; box-shadow:0 1px 4px #173c2d12; }
+.regional-pin:hover,.regional-pin.active,.regional-pin:focus-visible { background:white; box-shadow:0 0 0 2px var(--forest),0 3px 12px #173c2d20; z-index:3; }
+.regional-pin.active strong { background:var(--forest); color:white; }
+@media(max-width:700px) { .regional-map-scroll { max-height:600px; } .regional-map-toolbar { font-size:.875rem; padding:12px 8px; } }

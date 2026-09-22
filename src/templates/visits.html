@@ -1,0 +1,20 @@
+<section class="info-section visit-section" aria-labelledby="visitTitle">
+            <div class="section-label"><span>VISIT LOG</span><h3 id="visitTitle">우리의 산행 기록</h3></div>
+            <p id="visitStatus" role="status">방문 기록을 준비하고 있어요.</p>
+            <p class="visit-hint">기록은 방문자 모두에게 공개됩니다. 작성자에는 별명을 사용해 주세요.</p>
+            <form id="visitForm">
+              <p id="visitEditState" class="visit-hint">새 방문 기록</p>
+              <fieldset id="visitFields" disabled>
+                <div class="visit-inputs">
+                  <label>다녀온 날짜<input id="visitDate" type="date" required></label>
+                  <label>작성자<input id="visitAuthor" required maxlength="40" placeholder="이름 또는 별명" autocomplete="nickname"></label>
+                </div>
+                <label>코멘트<textarea id="visitComment" required maxlength="2000" rows="3" placeholder="함께 걸었던 코스, 날씨, 기억에 남는 순간을 적어주세요."></textarea></label>
+                <button id="visitSubmit" class="visit-save" type="submit">다녀왔어요 · 기록 저장</button>
+                <button id="visitCancel" class="visit-refresh" type="button" hidden>수정 취소</button>
+              </fieldset>
+            </form>
+            <button id="visitRefresh" class="visit-refresh" type="button">기록 새로고침</button>
+            <div id="visitList" class="visit-list"></div>
+            <p class="visit-hint">내가 작성한 기록은 같은 브라우저에서 수정·삭제할 수 있어요. 브라우저 데이터를 지우면 수정 권한을 되찾을 수 없으니 관리자에게 요청해 주세요.</p>
+          </section>

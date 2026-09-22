@@ -1,0 +1,88 @@
+<section class="explorer" aria-label="명산 지도와 상세 정보">
+      <div class="map-card">
+        <div class="map-heading">
+          <div>
+            <span class="step">01</span>
+            <h2>가고 싶은 산을 눌러보세요</h2>
+          </div>
+          <span class="map-count" id="mapCount">100 MOUNTAINS</span>
+        </div>
+
+        <div class="map-scroll" id="capitalMap" hidden tabindex="0" aria-label="수도권 개략 지도. 작은 화면에서는 좌우로 이동할 수 있습니다."><div class="map-wrap" id="mountainMap">
+          <svg class="region-outline" viewBox="0 0 1110 1248" role="img" aria-label="서울·경기와 강화의 산 선택용 개략 지도. 실제 위치와 거리는 다릅니다.">
+            <path d="M420 255 475 220 508 225 530 240 542 209 602 188 601 211 626 218 655 278 695 260 704 273 684 313 705 320 731 312 759 316 767 369 807 386 850 444 840 466 808 479 791 507 791 535 781 553 785 571 802 575 799 611 794 629 813 625 844 627 866 658 900 673 936 680 893 721 895 731 913 746 891 783 872 842 872 899 848 923 822 933 816 960 806 973 772 980 741 979 700 1006 671 1027 630 1077 608 1064 567 1026 552 1023 533 1037 486 1040 439 1050 413 1030 389 1003 376 970 375 924 388 912 390 887 369 886 351 905 332 901 319 875 315 851 291 849 277 838 281 816 311 804 353 809 375 808 358 779 365 755 361 739 333 716 324 697 322 647 303 621 299 575 297 521 303 497 331 495 351 500 359 553 372 550 374 416 365 389 409 378 417 396 435 411 449 405 451 385 438 369 442 355 458 341 479 337 487 316 468 304 447 307 426 295 419 281Z" fill="#e5efce" stroke="#b7c89b" stroke-width="3"/>
+            <path d="M208 477 221 450 238 439 260 454 271 481 278 529 276 576 267 588 238 585 216 571 205 537 191 510Z M194 675 210 650 260 645 282 634 300 644 311 665 282 685 248 700 218 700Z" fill="#e5efce" stroke="#b7c89b" stroke-width="3"/>
+            <text x="555" y="100" text-anchor="middle" fill="#173c2d" font-size="40" font-weight="700">서울 · 경기 · 강화</text>
+          </svg>
+          <div id="hotspots" aria-label="산 선택"></div>
+        </div></div>
+        <div id="nationalOverview" class="national-overview" aria-label="전국 권역 안내도"></div>
+        <div id="regionMountains" class="region-mountains" aria-label="지역별 산 선택" hidden></div>
+        <p class="map-help" id="mapHelp">권역을 선택하면 산 아이콘과 이름이 펼쳐져요.</p>
+      </div>
+
+      <article class="detail-card" id="detailCard" aria-live="polite" aria-labelledby="mountainName">
+        <div class="detail-hero">
+          <div class="detail-badges">
+            <span class="region-badge" id="regionBadge"></span>
+            <span class="difficulty-badge" id="difficultyBadge"></span>
+          </div>
+          <div class="detail-title-row">
+            <div>
+              <p class="detail-kicker">SELECTED MOUNTAIN</p>
+              <h2 id="mountainName"></h2>
+              <p id="mountainLocation" class="location"></p>
+            </div>
+            <span class="mountain-number" id="mountainNumber"></span>
+          </div>
+          <p id="mountainFeature" class="feature"></p>
+        </div>
+
+        <div class="stats" aria-label="산행 기본 정보">
+          <div><span>해발</span><strong id="elevation"></strong></div>
+          <div><span>대표 산행</span><strong id="hikeTime"></strong></div>
+          <div><span>서울역 출발 · 자가용</span><strong id="driveTime"></strong></div>
+        </div>
+
+        <div class="detail-body">
+          <div data-template="visits"></div>
+          <section class="info-section">
+            <div class="section-label"><span>TRAIL</span><h3>추천 코스</h3></div>
+            <p id="trail"></p>
+            <a id="safetyLink" class="route-link" href="https://www.knps.or.kr/" target="_blank" rel="noreferrer">탐방 안내 확인 ↗</a>
+          </section>
+
+          <section class="info-section transport-section">
+            <div class="section-label"><span>ACCESS</span><h3>서울역 기준 교통</h3></div>
+            <div class="transport-grid">
+              <div class="transport-item">
+                <div class="transport-icon" aria-hidden="true">🚇</div>
+                <div><span>대중교통</span><strong id="transitTime"></strong><p id="transitRoute"></p></div>
+              </div>
+              <div class="transport-item">
+                <div class="transport-icon" aria-hidden="true">🚙</div>
+                <div><span>자동차</span><strong id="carTime"></strong><p id="carRoute"></p></div>
+              </div>
+            </div>
+            <a class="route-link" id="routeLink" href="#" target="_blank" rel="noreferrer">카카오맵에서 길찾기 <span aria-hidden="true">↗</span></a>
+          </section>
+
+          <div class="local-grid">
+            <section class="local-card food-card">
+              <span class="local-icon" aria-hidden="true">🥢</span>
+              <p class="mini-label">LOCAL FOOD</p>
+              <h3>지역 먹거리</h3>
+              <p id="food"></p>
+            </section>
+            <section class="local-card festival-card">
+              <span class="local-icon" aria-hidden="true">🍂</span>
+              <p class="mini-label">OCTOBER FESTIVAL</p>
+              <h3 id="festival"></h3>
+              <p id="festivalNote"></p>
+              <a id="festivalLink" href="https://korean.visitkorea.or.kr/kfes/list/wntyFstvlList.do" target="_blank" rel="noreferrer">2026년 일정 검색 <span aria-hidden="true">↗</span></a>
+            </section>
+          </div>
+          <p class="data-note">높이는 반올림한 참고값이며 자료별 차이가 있습니다. 산행·이동시간은 계획용 추정치로 실시간 조회값이 아닙니다. <a id="sourceLink" href="https://fmtview.com/227" target="_blank" rel="noreferrer">선정 목록 대조 자료 ↗</a></p>
+        </div>
+      </article>
+    </section>

@@ -1,0 +1,26 @@
+/* Shared hiking log */
+.visit-actions { display: flex; gap: 8px; margin-top: 12px; }
+.visit-actions button { min-height: 44px; padding: 8px 14px; background: white; border: 1px solid #aebeb3; border-radius: 8px; color: var(--forest); }
+.visit-hint { font-size: .8rem; color: var(--muted); }
+.visit-section #visitStatus { font-size: .875rem; margin-bottom: 10px; }
+.visit-section fieldset { border: 0; padding: 0; margin: 16px 0; min-width: 0; }
+.visit-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.visit-section label { display: block; font-size: .875rem; font-weight: 700; margin-bottom: 12px; }
+.visit-section input, .visit-section textarea { display: block; width: 100%; min-width: 0; margin-top: 6px; padding: 11px; border: 1px solid #aebeb3; border-radius: 10px; background: white; color: var(--ink); font: inherit; }
+.visit-section textarea { resize: vertical; }
+.visit-section input:focus-visible, .visit-section textarea:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+.visit-save, .visit-refresh { min-height: 44px; padding: 10px 16px; border-radius: 10px; font-weight: 700; }
+.visit-save { border: 0; background: var(--forest); color: white; }
+.visit-refresh { border: 1px solid var(--line); background: white; color: var(--forest); }
+.visit-section :disabled { cursor: not-allowed; opacity: .55; }
+.visit-list article { margin-top: 12px; padding: 16px; background: #eaf5ee; border: 1px solid #b9d8c2; border-radius: 12px; overflow-wrap: anywhere; }
+.visit-list article p { margin: 8px 0 0; white-space: pre-wrap; font-size: .9rem; }
+.visit-list > p { color: var(--muted); font-size: .875rem; }
+.mini-mountain.visited { background: #dff2e5; border-color: #65a87c; color: #173c2d; }
+.mini-mountain.visited:hover, .mini-mountain.visited.active { background: #c5e7cf; border-color: #246c40; color: #173c2d; box-shadow: inset 0 0 0 2px #246c40; }
+.mini-mountain.visited small { color: #42634c; }
+.mini-mountain .visit-badge { margin-top: 10px; color: #246c40; font-size: .78rem; letter-spacing: 0; }
+.detail-card.visited { border-color: #65a87c; }
+.detail-card.visited .detail-hero { background: #286442; }
+.hotspot.visited .mountain-pin-name, .regional-pin.visited strong { background: #dff2e5; color: #175931; border: 1px solid #65a87c; }
+@media(max-width: 480px) { .visit-inputs { grid-template-columns: 1fr; gap: 0; } }

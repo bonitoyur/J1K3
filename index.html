@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c2d">
+  <meta name="description" content="홍제 공삼삼에서 출발하는 전국 100대 명산. 지역과 산을 골라 높이, 대표 코스, 서울역 기준 교통, 먹거리와 축제 확인 정보를 살펴보세요.">
+  <title>홍제 공삼삼 · 전국 100대 명산</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23173c2d'/%3E%3Cpath d='M8 49 26 18l8 14 7-11 15 28Z' fill='%23d7ef8d'/%3E%3Cpath d='M26 18 34 32l-5-3-4 3-5-3Z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+  <div data-template="header"></div>
+
+  <main id="top">
+    <p id="appStatus" role="status">화면을 불러오고 있어요…</p>
+    <noscript>이 페이지는 JavaScript를 켜야 이용할 수 있습니다.</noscript>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">HONGJE 033 WEEKEND GUIDE</p>
+        <h1 id="page-title">홍제 공삼삼에서 출발하는<br><em>전국 100대 명산</em></h1>
+      </div>
+      <div class="intro-copy">
+        <p>함께 갈 지역을 고르고, 산 아이콘을 눌러보세요. 높이부터 코스, 교통, 먹거리까지 한곳에서 살펴볼 수 있어요.</p>
+        <p class="update">산림청 선정 100곳 · 교통 안내는 서울역 기준 유지</p>
+      </div>
+    </section>
+
+    <nav id="regionNav" class="region-nav" aria-label="명산 지역 선택"></nav>
+    <p class="selection-summary" id="selectionSummary" role="status"></p>
+
+    <div data-template="explorer"></div>
+
+    <section class="quick-list" aria-labelledby="quick-title">
+      <div class="quick-heading">
+        <div>
+          <span class="step">02</span>
+          <h2 id="quick-title">전국 100곳 한눈에 보기</h2>
+        </div>
+        <p>산 이름을 누르면 상세 카드로 이동해요.</p>
+      </div>
+      <div class="mountain-grid" id="mountainGrid"></div>
+    </section>
+
+    <aside class="notice">
+      <strong>가기 전 꼭 확인하세요</strong>
+      <p>2002년 산림청 선정 목록을 공개 대조 자료로 확인했습니다. 경계에 걸친 산은 대표 접근 지역 한 곳에만 집계합니다. 산행·이동시간은 계획용 추정이며, 산 정상 높이와 안내 코스의 최고점은 다를 수 있습니다. 2026년 축제 개최 여부·날짜는 미확인인 항목이 있으니 카드의 표시와 주최 측 공지를 확인하세요. 자료 정리: 2026. 09. 21.</p>
+    </aside>
+  </main>
+
+  <div data-template="footer"></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">링크를 복사했어요.</div>
+  <script src="firebase-config.js"></script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
